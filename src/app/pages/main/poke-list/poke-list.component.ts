@@ -10,7 +10,7 @@ import Pokemons from '../pokemons.model';
 export class PokeListComponent implements OnInit {
 
   public pokemonList: Pokemons[] = [];
-  pokemonsName: any
+  teste: any
 
   constructor(private mainService: MainService) { }
 
@@ -25,6 +25,13 @@ export class PokeListComponent implements OnInit {
     }, error => {
       console.log('não funcionou essa merda', error)
     })
+    this.loadPokemonDetails('pikachu')
   }
 
+  loadPokemonDetails(name: string) {
+    this.mainService.listPokemonsDetails(name).subscribe(pokemonDetails => {
+      this.teste = pokemonDetails;
+      console.log(this.teste)
+    })
+  }
 }
