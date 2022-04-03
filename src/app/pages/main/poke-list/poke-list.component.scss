@@ -1,50 +1,82 @@
 .css-input {
-    width: 25rem;
+    width: 100%;
+    min-height: 4rem;
     padding: 9px;
     font-size: 17px;
-    border-width: 1px;
-    border-color: #d5d5d5;
     background-color: rgb(255, 255, 255);
     color: rgb(11, 20, 89);
-    border-style: solid;
     border-radius: 14px;
     box-shadow: 0px 0px 6px rgba(66,66,66,.0);
     text-shadow: 0px 0px 0px rgba(66,66,66,.75);
-}
-.css-input:focus {
-    outline:none;
+
+    .css-input:focus {
+        outline:none;
+    }
+    
+    input{
+        background-color: rgb(255, 255, 255);
+        border: #000;
+        outline: 0;
+        font-family: 'Chakra Petch', sans-serif;
+        font-weight: 500;
+        width: 25rem;
+    }
+    
+    i {
+        font-size: 25px;
+        color: #6d6d6d;
+        margin: auto 7px;
+    }
 }
 
-input{
-    background-color: rgb(255, 255, 255);
-    border: #000;
-    outline: 0;
-    font-family: 'Chakra Petch', sans-serif;
-    font-weight: 500;
-    width: 25rem;
-}
-
-i {
-    font-size: 20px;
-    color: rgb(11, 20, 89);
-    padding: 5px;
-}
-
-.container {
+.card-body {
     border-radius: 22px;
     background-color: #fff;
-    -webkit-box-shadow: 0px 1px 28px -8px rgba(195,195,195,0.7);
-    box-shadow: 0px 1px 28px -8px rgba(195,195,195,0.7);
-}
 
-.card {
-    border: 1px solid #ddd;
-    padding: 1rem;
-    border-radius: 14px;
-    transition: 0.1s;
+    .card {
+        border: 1px solid #ddd;
+        padding: 1rem;
+        border-radius: 14px;
+        transition: 0.1s;
+    
+        &:hover {
+            cursor: default;
+            box-shadow: 0 6px 0 0 rgba(78, 61, 61, 0.01), 4px 7px 20px 0 rgba(0,0,0,.04);
+        }
+    
+        .pokeimg {
+            margin-top: -5rem!important;
+            width: 156px;
+            margin: 0 auto;
+        }
+        
+        .pokenumber {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #a6a6a6;
+            text-align: center;
+        }
+    
+        .pokename {
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #000447;
+        }
 
-    &:hover {
-        cursor: default;
-        box-shadow: 0 6px 0 0 rgba(78, 61, 61, 0.01), 4px 7px 20px 0 rgba(0,0,0,.04);
+        .poketype {
+            background-color: #b8ffad;
+            color: #0a4200;
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 19px;
+            font-weight: 600;
+            border-radius: 8px;
+
+            p {
+                vertical-align: middle;
+            }
+        }
     }
 }
