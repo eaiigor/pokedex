@@ -1,3 +1,4 @@
+import { Details } from './../pokemons.model';
 import { MainService } from './../../main.service';
 import { Component, OnInit } from '@angular/core';
 import Pokemons from '../pokemons.model';
@@ -10,7 +11,7 @@ import Pokemons from '../pokemons.model';
 export class PokeListComponent implements OnInit {
 
   public pokemonList: Pokemons[] = [];
-  teste: any
+  public pokemonDetails: Details[] = [];
 
   constructor(private mainService: MainService) { }
 
@@ -25,13 +26,11 @@ export class PokeListComponent implements OnInit {
     }, error => {
       console.log('não funcionou essa merda', error)
     })
-    this.loadPokemonDetails('pikachu')
   }
 
   loadPokemonDetails(name: string) {
     this.mainService.listPokemonsDetails(name).subscribe(pokemonDetails => {
-      this.teste = pokemonDetails;
-      console.log(this.teste)
+      this.pokemonDetails = pokemonDetails;
     })
   }
 }
