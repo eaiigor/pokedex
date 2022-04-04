@@ -1,6 +1,9 @@
+import { Observable } from "rxjs/internal/Observable";
+
 export default interface Pokemons {
     name: string;
-    url: Details[];
+    url: string;
+    details$: Observable<Details>;
 }
 
 export interface PokemonResponse {

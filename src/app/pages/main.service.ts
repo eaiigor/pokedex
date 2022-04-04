@@ -15,9 +15,8 @@ export class MainService {
       map(x => x.results));
   }
 
-  listPokemonsDetails(name: string): Observable<Details[]> {
-    return this.http.get<Pokemons>(`https://pokeapi.co/api/v2/pokemon/${name}`).pipe(
-      map(x => x.url));
+  listPokemonsDetails(name: string): Observable<Details> {
+    return this.http.get<Details>(`https://pokeapi.co/api/v2/pokemon/${name}`);
   }
 
 }

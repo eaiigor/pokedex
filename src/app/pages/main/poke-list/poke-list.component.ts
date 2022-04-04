@@ -21,16 +21,17 @@ export class PokeListComponent implements OnInit {
 
   loadPokemons() {
     this.mainService.listPokemons().subscribe(pokemons => {
-      this.pokemonList = pokemons;
-      console.log(this.pokemonList)
-    }, error => {
-      console.log('não funcionou essa merda', error)
+      this.pokemonList = pokemons.map(pokemon => ({
+        ...pokemon,
+        details$: this.mainService.listPokemonsDetails(pokemon.name)
+      }as Pokemons))
     })
-  }
-
-  loadPokemonDetails(name: string) {
-    this.mainService.listPokemonsDetails(name).subscribe(pokemonDetails => {
-      this.pokemonDetails = pokemonDetails;
-    })
+    // this.mainService.listPokemons().subscribe(pokemons => {
+    //   this.pokemonList = pokemons;
+    //   this.loadPokemonDetails(this.pokemonDetails.)
+    //   console.log(this.pokemonList)
+    // }, error => {
+    //   console.log('não funcionou essa merda', error)
+    // })
   }
 }
