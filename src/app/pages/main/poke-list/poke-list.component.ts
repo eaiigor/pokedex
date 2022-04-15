@@ -12,6 +12,7 @@ export class PokeListComponent implements OnInit {
 
   public pokemonList: Pokemons[] = [];
   public pokemonDetails: Details[] = [];
+  public typePokemons: any;
 
   constructor(private mainService: MainService) { }
 
@@ -25,13 +26,20 @@ export class PokeListComponent implements OnInit {
         ...pokemon,
         details$: this.mainService.listPokemonsDetails(pokemon.name)
       }as Pokemons))
+      this.getTypePokemons();
     })
-    // this.mainService.listPokemons().subscribe(pokemons => {
-    //   this.pokemonList = pokemons;
-    //   this.loadPokemonDetails(this.pokemonDetails.)
-    //   console.log(this.pokemonList)
-    // }, error => {
-    //   console.log('não funcionou essa merda', error)
-    // })
+  }
+  
+  getTypePokemons() {
+    this.pokemonList.forEach(pokemon => {
+      pokemon.details$.subscribe(details => {
+        this.typePokemons = details.types.map(type => type.type.name);
+        this.pokemonDetails.push({
+          name: details.name,
+          types: this.typePokemons
+        } as Details)
+        console.log(this.typePokemons)
+      })
+    })
   }
 }

@@ -27,8 +27,8 @@
                         <div>
                             <p class="pokenumber mb-2">N° {{ details.id }}</p>
                             <p class="pokename mb-0">{{ pokemon.name }}</p>
-                            <div class="poketype">
-                                <p>Grama</p>
+                            <div class="poketype" *ngFor="let type of typePokemons">
+                                <p>{{ type }}</p>
                             </div>
                         </div>
                     </div>
