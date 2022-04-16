@@ -4,6 +4,7 @@ export default interface Pokemons {
     name: string;
     url: string;
     details$: Observable<Details>;
+    types$: Observable<string[]>;
 }
 
 export interface PokemonResponse {
