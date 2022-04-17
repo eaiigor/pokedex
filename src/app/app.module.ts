@@ -8,7 +8,7 @@ import { HeaderComponent } from './pages/header/header/header.component';
 import { PokeListComponent } from './pages/main/poke-list/poke-list.component';
 import { MoreInfoComponent } from './pages/main/more-info/more-info.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false
     }),
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

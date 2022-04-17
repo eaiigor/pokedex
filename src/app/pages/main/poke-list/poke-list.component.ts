@@ -5,6 +5,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import Pokemons from '../pokemons.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -15,15 +16,16 @@ import { map } from 'rxjs';
 export class PokeListComponent implements OnInit {
 
   public pokemonList: Pokemons[] = [];
+  public basePokemonList: Pokemons[];
   public pokemonDetails: Details[] = [];
   public selectedPokemon: Pokemons;
-  public searchValue: string;
+  public search = ''
+  public isLoadingPokemons = false;
 
   constructor(
     private mainService: MainService,
     private modalService: NgbModal) {
     this.selectedPokemon = {} as Pokemons;
-    this.searchValue = '';
   }
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class PokeListComponent implements OnInit {
         ...pokemon,
         details$: this.mainService.listPokemonsDetails(pokemon.name)
       } as Pokemons))
+      this.basePokemonList = [...this.pokemonList]
       this.getTypePokemons();
     })
   }
@@ -53,7 +56,18 @@ export class PokeListComponent implements OnInit {
     this.modalService.open(content);
   }
 
-  filterPokemon(pokemon: Pokemons) {
-    console.log(pokemon)
+  searchPokemon(delay = false) {
+    if(delay) {this.isLoadingPokemons = delay}
+
+    const normalize = (value: string) => this.removeAccents(value).toLowerCase();
+
+    const text = this.search;
+    this.pokemonList = this.basePokemonList.filter(pokemon => {
+      return (normalize(pokemon.name).includes(normalize(text)))
+    })
+  }
+
+  removeAccents(text: string): string {
+    return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   }
 }
