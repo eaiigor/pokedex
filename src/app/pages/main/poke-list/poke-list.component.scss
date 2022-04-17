@@ -67,13 +67,17 @@
         }
 
         .poketype {
-            background-color: #b8ffad;
-            color: #0a4200;
+            background-color: #ededed;
+            color: #484848;
             text-align: center;
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 19px;
+            font-size: 21px;
             font-weight: 600;
             border-radius: 8px;
+            width: 10rem;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
 
             p {
                 vertical-align: middle;

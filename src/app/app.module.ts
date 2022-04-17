@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/header/header/header.component';
 import { PokeListComponent } from './pages/main/poke-list/poke-list.component';
 import { MoreInfoComponent } from './pages/main/more-info/more-info.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,11 @@ import { MoreInfoComponent } from './pages/main/more-info/more-info.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModalModule
+    NgbModalModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false
+    }),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
