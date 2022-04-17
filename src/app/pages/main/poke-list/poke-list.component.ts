@@ -4,8 +4,9 @@ import { MainService } from './../../main.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import Pokemons from '../pokemons.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { map } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
+import { PokemonDetail, PokemonList } from '../pokemon.list';
 
 
 @Component({
@@ -22,6 +23,11 @@ export class PokeListComponent implements OnInit {
   public search = ''
   public isLoadingPokemons = false;
 
+  isLoading: boolean;
+  isLastPage = false;
+  pokemons: PokemonDetail[] = [];
+  private offset: number;
+
   constructor(
     private mainService: MainService,
     private modalService: NgbModal) {
@@ -30,6 +36,7 @@ export class PokeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPokemons();
+    this.getPage(this.offset)
   }
 
   loadPokemons() {
@@ -69,5 +76,53 @@ export class PokeListComponent implements OnInit {
 
   removeAccents(text: string): string {
     return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+
+
+
+
+
+
+  getPage(offset: number) {
+    if(!this.isLoading && !this.isLastPage) {
+      this.isLoading = true;
+      this.mainService.getPokemonList(offset)
+      .subscribe((list: PokemonList[]) => {
+        if(list.length === 0) {
+          this.isLastPage = true;
+        }
+
+        if(!this.isLastPage) {
+          this.getPokemon(list);
+        }
+      });
+    }
+  }
+
+  onScroll(event: Event): void {
+    const element: HTMLDivElement = event.target as HTMLDivElement;
+    if(element.scrollHeight - element.scrollTop < 1000) {
+      this.getPage(this.offset);
+    }
+  }
+
+  private getPokemon(list: PokemonList[]) {
+    const arr: Observable<PokemonDetail>[] = [];
+    list.map((value: PokemonList) => {
+      arr.push(
+        this.mainService.getPokemonDetail(value.name)
+      );
+    });
+
+    forkJoin([...arr]).subscribe((pokemons: any[]) => {
+      this.pokemons.push(...pokemons);
+      this.offset +=20;
+      this.isLoading = false;
+    })
+  }
+
+  getPrincipalType(list: any[]) {
+    return list.filter(x => x.slot === 1)[0]?.type.name;
   }
 }
