@@ -5,8 +5,6 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import Pokemons from '../pokemons.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs';
-import { FormControl } from '@angular/forms';
-
 
 @Component({
   selector: 'app-poke-list',

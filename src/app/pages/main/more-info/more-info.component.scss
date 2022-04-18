@@ -1,3 +1,7 @@
+*{
+    cursor: default;
+}
+
 .poke-id {
     vertical-align: middle;
     color: #484848;
@@ -15,13 +19,13 @@
 }
 
 .poketypes {
-    background-color: #dddddd;
+    border: 1px solid #dddddd;
     border-radius: 8px;
     min-height: 3rem;
 }
 
 .sub-poketypes {
-    background-color: #dddddd;
+    border: 1px solid #dddddd;
     border-radius: 8px;
     min-height: 3rem;
 }

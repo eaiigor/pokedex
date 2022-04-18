@@ -6,10 +6,8 @@
             type="text" 
             placeholder="Pesquise seu Pokemon" 
             [(ngModel)]="search"
-            (keyup)="searchPokemon()"/>
-        <!-- <button type="button" class="btn">
-            <img src="../../../../assets/img/pokeball.png" style="width: 40px;" alt="icon">
-        </button> -->
+            (keyup)="searchPokemon()"
+        />
     </div>
 </div>
 
@@ -34,7 +32,7 @@
                             <p class="pokenumber mb-2">#{{ details.id | number: '3.0' }}</p>
                             <p class="pokename text-center mb-0">{{ pokemon.name | titlecase }}</p>
                             <div class="d-flex justify-content-evenly w-100">
-                                <div *ngFor="let type of pokemon.types$ | async" class="d-flex flex-row poketype">
+                                <div *ngFor="let type of pokemon.types$ | async" class="d-flex flex-row poketype bg-color-{{type}}">
                                     <p>{{ type | titlecase }}</p>
                                 </div>
                             </div>
