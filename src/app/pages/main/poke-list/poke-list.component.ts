@@ -19,7 +19,7 @@ export class PokeListComponent implements OnInit {
   public selectedPokemon: Pokemons;
   public search = ''
   public isLoadingPokemons = false;
-  public page = 1;
+  public page = 0;
 
   constructor(
     private mainService: MainService,
