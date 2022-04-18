@@ -1,11 +1,71 @@
-<section>
-    <div class="modal-header">
-        <div class="mx-auto">
-            <img src="" alt="">
-        </div>
-    </div>
+<section *ngIf="pokemon.details$ | async as details">
+    <div class="modal-header mx-auto d-flex flex-row flex-column">
 
-    <div class="modal-body">
-        {{ pokemon.name }}
+        <div class="mx-auto">
+            <img class="pokegif" src="https://projectpokemon.org/images/normal-sprite/{{details.name}}.gif" alt="">
+        </div>
+        <div class="mt-2">
+            <p class="mb-0 text-center poke-id">#{{ details.id | number: '3.0' }}</p>
+            <h3 class="text-center poke-name">{{ pokemon.name | titlecase }}</h3>
+        </div>
+        
     </div>
+    <div class="modal-body w-100">
+        <div class="d-flex align-items-center poketypes">
+            <div class="d-flex" style="margin-left: 15px;">
+                <p class="types mb-0">Tipos:</p>
+            </div>
+            <div class="d-flex justify-content-end w-100">
+                <div class="align-items-center" *ngFor="let type of pokemon.types$ | async">
+                    <div class="poketype mx-2"><p class="mb-0">{{ type | titlecase }}</p></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sub-poketypes d-flex align-items-center mt-2">
+            <div class="d-flex" style="margin-left: 15px;">
+                <p class="abilities mb-0">Habilidades: </p>
+            </div>
+            <div class="d-flex justify-content-end w-100">
+                <div class="align-items-center" *ngFor="let abilities of pokemon.abilities$ | async">
+                    <div class="poketype mx-2"><p class="mb-0">{{ abilities | titlecase }}</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 w-100 d-flex justify-content-around">
+            <div class="w-50 d-flex justify-content-center card-altura mx-2">
+                <div class="d-flex align-items-center">
+                    <p class="mb-0 mt-1">Altura: {{ (details.height / 10).toFixed(1) }}m </p>
+                </div>
+            </div>
+            <div class="w-50 d-flex justify-content-center card-peso mx-2">
+                <div class="d-flex align-items-center">
+                    <p class="mb-0 mt-1">Peso: {{ details.weight }}kg </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 card-status px-4 py-2">
+            <div class="w-100">
+                <h4 class="text-center mx-auto">Status</h4>
+            </div>
+            <div class="w-100 d-flex justify-content-between">
+                <div class="w-100">
+                    <div class="line" *ngFor="let stats of pokemon.stats$ | async">
+                        <p class="mb-0">{{ stats }}</p>
+                    </div>
+                </div>
+        
+                <div>
+                    <div class="line" *ngFor="let base_stats of pokemon.base_stats$ | async">
+                        <p class="mb-0">{{ base_stats }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    
 </section>

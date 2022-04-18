@@ -40,6 +40,9 @@ export class PokeListComponent implements OnInit {
       } as Pokemons))
       this.basePokemonList = [...this.pokemonList]
       this.getTypePokemons();
+      this.getAbilitiesPokemons();
+      this.getStatsPokemon();
+      this.getStatsNumberPokemon();
     })
   }
 
@@ -49,6 +52,30 @@ export class PokeListComponent implements OnInit {
         map(details => details.types.map(type => type.type.name.replace(/,\s*$/, " ")))
       )
     });
+  }
+
+  getAbilitiesPokemons() {
+    this.pokemonList.forEach(pokemon => {
+      pokemon.abilities$ = pokemon.details$.pipe(
+        map(details => details.abilities.map(abilities => abilities.ability.name))
+      )
+    })
+  }
+
+  getStatsPokemon() {
+    this.pokemonList.forEach(pokemon => {
+      pokemon.stats$ = pokemon.details$.pipe(
+        map(details => details.stats.map(stats => stats.stat.name))
+      )
+    })
+  }
+
+  getStatsNumberPokemon() {
+    this.pokemonList.forEach(pokemon => {
+      pokemon.base_stats$ = pokemon.details$.pipe(
+        map(details => details.stats.map(stats => stats.base_stat ))
+      )
+    })
   }
 
   openMoreInfoModal(pokemon: Pokemons, content: TemplateRef<MoreInfoComponent>) {

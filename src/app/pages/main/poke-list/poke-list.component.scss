@@ -68,20 +68,20 @@
         }
 
         .poketype {
+            width: 6rem;
             background-color: #ededed;
-            color: #484848;
-            text-align: center;
-            font-family: 'Josefin Sans', sans-serif;
-            font-size: 21px;
-            font-weight: 600;
             border-radius: 8px;
-            width: 10rem;
             height: 2rem;
             display: flex;
             justify-content: center;
 
             p {
                 vertical-align: middle;
+                color: #484848;
+                text-align: center;
+                font-family: 'Josefin Sans', sans-serif;
+                font-size: 21px;
+                font-weight: 600;
             }
         }
     }
