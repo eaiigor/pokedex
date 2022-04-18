@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div class="container mt-4">
+<div class="container mt-4 mb-4">
     <div class="card-body d-flex justify-content-center">
         <div class="row d-flex justify-content-between mx-auto">
 
@@ -40,9 +40,19 @@
                     </div>
                 </div>
             </div>
-              
+
+            <ngb-pagination 
+                class="mt-5 d-flex justify-content-center pagination"
+                [collectionSize]="120"
+                [(page)]="page"
+                [maxSize]="5"
+                [boundaryLinks]="true"
+                (pageChange)="loadPokemons()">
+            </ngb-pagination>
+                
         </div>
     </div>
+
 </div>
 
 <ng-template #ngModal>

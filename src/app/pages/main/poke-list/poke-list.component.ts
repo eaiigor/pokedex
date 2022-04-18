@@ -19,6 +19,7 @@ export class PokeListComponent implements OnInit {
   public selectedPokemon: Pokemons;
   public search = ''
   public isLoadingPokemons = false;
+  public page = 1;
 
   constructor(
     private mainService: MainService,
@@ -31,7 +32,7 @@ export class PokeListComponent implements OnInit {
   }
 
   loadPokemons() {
-    this.mainService.listPokemons().subscribe(pokemons => {
+    this.mainService.listPokemons(this.page).subscribe(pokemons => {
       this.pokemonList = pokemons.map(pokemon => ({
         ...pokemon,
         details$: this.mainService.listPokemonsDetails(pokemon.name)
