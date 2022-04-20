@@ -1,5 +1,10 @@
 import { Observable } from "rxjs/internal/Observable";
 
+export interface PokemonData {
+    data: Pokemons[];
+    size: number;
+  }
+
 export default interface Pokemons {
     name: string;
     url: string;
