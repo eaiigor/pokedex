@@ -43,10 +43,12 @@
 
             <ngb-pagination 
                 class="mt-5 d-flex justify-content-center pagination"
-                [collectionSize]="120"
+                [collectionSize]="totalPokemons"
                 [(page)]="page"
+                [pageSize]="21"
                 [maxSize]="5"
                 [boundaryLinks]="true"
+                [rotate]="true"
                 (pageChange)="loadPokemons()">
             </ngb-pagination>
                 

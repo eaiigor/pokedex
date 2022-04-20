@@ -20,6 +20,7 @@ export class PokeListComponent implements OnInit {
   public search = ''
   public isLoadingPokemons = false;
   public page = 0;
+  public totalPokemons = 0;
 
   constructor(
     private mainService: MainService,
@@ -33,7 +34,8 @@ export class PokeListComponent implements OnInit {
 
   loadPokemons() {
     this.mainService.listPokemons(this.page).subscribe(pokemons => {
-      this.pokemonList = pokemons.map(pokemon => ({
+      this.totalPokemons = pokemons.size;
+      this.pokemonList = pokemons.data.map(pokemon => ({
         ...pokemon,
         details$: this.mainService.listPokemonsDetails(pokemon.name)
       } as Pokemons))
