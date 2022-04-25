@@ -70,9 +70,9 @@ img {
     min-height: 2.5rem;
 
     p {
-        color: #F97111;
+        color: #000;
         font-family: 'Josefin Sans', sans-serif;
-        font-size: 22px;
+        font-size: 20px;
         text-align: center;
         font-weight: 500;
     }
@@ -84,16 +84,16 @@ img {
     min-height: 2.5rem;
     
     p {
-        color: #45CBF3;
+        color: #000;
         font-family: 'Josefin Sans', sans-serif;
-        font-size: 22px;
+        font-size: 20px;
         text-align: center;
         font-weight: 500;
     }
 }
 
 .card-status {
-    background-color:#dddddd;
+    background-color:#fff;
     border-radius: 8px;
 
     .line:nth-last-child(even) {
