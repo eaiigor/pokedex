@@ -67,25 +67,33 @@
 
 
             <div class="w-100">
-                <div *ngFor="let type of pokemon.types$ | async">
-                    <div *ngFor="let base_stats of pokemon.base_stats$ | async">
-                        <p class="mb-0">{{ base_stats }}</p>
-                        <div class="progress">
-                            <div 
-                                class="bg-color-{{type}} progress-bar progress-bar-striped progress-bar-animated" 
-                                role="progressbar"
-                                [ngStyle]="{'width': base_stats + '%'}"
-                                aria-valuenow="base_stats"
-                                aria-valuemin="0"
-                                aria-valluemax="300%"> {{ base_stats }}
+                <div class="w-100 d-flex justify-content-between" *ngFor="let type of pokemon.types$ | async | slice:0:1;">
+                    <div class="w-50">
+                        <div *ngFor="let stats of pokemon.stats$ | async">
+                            <p class="mb-0">{{ stats }}</p>
+                        </div>
+                    </div>
+
+                    <div class="w-50">
+                        <div *ngFor="let base_stats of pokemon.base_stats$ | async">
+                            <div class="progress">
+                                <div 
+                                    class="bg-color-{{type}} progress-bar progress-bar-striped progress-bar-animated" 
+                                    role="progressbar"
+                                    [ngStyle]="{'width': base_stats / 3 + '%'}"
+                                    aria-valuenow="base_stats"
+                                    aria-valuemin="0"
+                                    aria-valluemax="300"> {{ base_stats }}
+                                </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
+                
             </div>
 
+
         </div>
-        
     </div>
-    
 </section>
