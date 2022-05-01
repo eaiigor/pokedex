@@ -68,15 +68,15 @@
 
             <div class="w-100">
                 <div class="w-100 d-flex justify-content-between" *ngFor="let type of pokemon.types$ | async | slice:0:1;">
-                    <div class="w-50">
+                    <div style="width: 40%;">
                         <div *ngFor="let stats of pokemon.stats$ | async">
                             <p class="mb-0">{{ stats }}</p>
                         </div>
                     </div>
 
-                    <div class="w-50">
+                    <div style="width: 60%;">
                         <div *ngFor="let base_stats of pokemon.base_stats$ | async">
-                            <div class="progress">
+                            <div class="progress" style="margin-bottom: 0.8rem;">
                                 <div 
                                     class="bg-color-{{type}} progress-bar progress-bar-striped progress-bar-animated" 
                                     role="progressbar"
