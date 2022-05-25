@@ -1,5 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 *{
     cursor: default;
+}
+
+.poke-header {
+    display: flex;
+    padding: 1rem 1rem;
+    max-height: 30vh;
+
+    .poke-sprite {
+        margin-left: 2rem;
+    }
+
+    .poke-name {
+        margin: auto 2rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+
+        h4 {
+            color: #000447;
+        }
+
+        .p {
+            font-size: 14px;
+            color: #a6a6a6;
+        }
+
+        .ptype {
+            font-size: 14px;
+            margin-right: 10px;
+        }
+    }
 }
 
 .poke-id {
@@ -41,14 +73,13 @@
 
 .poketype {
     background-color: #2c2c2c;
-    min-width: 7rem;
     border-radius: 8px;
+    padding: 1px 1rem;
     color: #fff;
     font-family: 'Josefin Sans', sans-serif;
 
     p{
         font-weight: 200;
-        font-size: 18px;
         text-align: center;
     }
 }
