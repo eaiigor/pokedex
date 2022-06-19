@@ -29,6 +29,17 @@
 
         <div class="container">
 
+            <div class="d-flex justify-content-around">
+                <div class="text-center">
+                    <h3>{{ (details.height / 10).toFixed(1) }} M</h3>
+                    <p>Altura</p>
+                </div>
+                <div class="text-center">
+                    <h3>{{ details.weight / 10 }} KG</h3>
+                    <p>Peso</p>
+                </div>
+            </div>
+
             <div>
                 <div>
                     <p>Habilidades: </p>
@@ -39,26 +50,11 @@
                     </div>
                 </div>
             </div>
-    
-            <div>
-                <div>
-                    <div>
-                        <p>Altura: {{ (details.height / 10).toFixed(1) }}m </p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <div>
-                        <p>Peso: {{ details.weight / 10 }}kg </p>
-                    </div>
-                </div>
-            </div>
             
         </div>
         
 
-        <div class="mt-2 card-status px-4 py-2">
+        <div class="mt-2 card-status container">
             <!-- <div class="w-100">
                 <h4 class="text-center mx-auto">Status</h4>
             </div>
@@ -76,13 +72,11 @@
                 </div>
             </div> -->
 
-
-
             <div class="w-100">
                 <div class="w-100 d-flex justify-content-between" *ngFor="let type of pokemon.types$ | async | slice:0:1;">
                     <div style="width: 40%;">
                         <div *ngFor="let stats of pokemon.stats$ | async">
-                            <p class="mb-0">{{ stats }}</p>
+                            <p class="mb-0 titlestatus">{{ stats | uppercase }}</p>
                         </div>
                     </div>
 
